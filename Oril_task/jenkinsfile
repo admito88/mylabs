@@ -1,0 +1,12 @@
+peline {
+    agent any
+    stages {
+       stage('Connect-Git') {
+            steps {
+                git credentialsId: '100',
+                    url: 'git@github.com:admito88/jenkins_test.git'
+                sh "cat new_file.txt"
+            }
+        }
+        }	
+    }

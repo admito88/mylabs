@@ -1,0 +1,15 @@
+---
+- name: test template
+  hosts: 
+      - cli1
+      - cli4
+  become: yes
+  
+  vars:
+   src_file: /home/ec2-user/Test.j2
+   dest_file: /home/Test.txt
+  
+  tasks:
+    - name: Copy whith template edit file Test.j2
+      template: src={{ src_file }} dest_file= {{ dest_file }} mode=0777
+    

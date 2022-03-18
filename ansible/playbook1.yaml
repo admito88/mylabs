@@ -1,0 +1,12 @@
+---
+- name: Copy file and reboot service
+  hosts: all
+  become: yes
+  any_errors_fatal: yes
+  
+  tasks:
+    - name: copy file
+      shell: cp /home/admito/index.html
+      
+    - name: restart service
+      service: name=apache2 state=restarted
