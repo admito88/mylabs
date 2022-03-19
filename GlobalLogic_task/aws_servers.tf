@@ -29,5 +29,3 @@ yum upgrade
 EOF
 key_name = "Amazon_linux"
 }
-
-resource "aws_security_group" "for_jenkins"
