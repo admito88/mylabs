@@ -4,4 +4,4 @@
   become: yes
 
 tasks:
-  - name
+  - name:
