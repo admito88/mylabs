@@ -19,7 +19,7 @@ EOF
 key_name = "Amazon_linux"
 }
 
-resource "aws_instance" "jenkins_server" {
+resource "aws_instance" "kvm_server" {
 ami = "ami-0dcc0ebde7b2e00db"
 instance_type = "t2.micro"
 user_data = <<EOF
