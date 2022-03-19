@@ -1,7 +1,9 @@
 ---
-- name: Tasks from GlobalLogic
-  hosts: all
-  become: yes
+  - name: Hellow
+    hosts: all
+    become: yes
 
-tasks:
-  - name:
+    tasks:
+      - name: ls directory
+        shell: ls -la /home
+        
