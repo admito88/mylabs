@@ -1,0 +1,74 @@
+Linux experience
+What is udev +
+Systemd vs initd +
+Run levels (before systemd)  +
+Filesystems +
+lvm
+Proc (pseudo FS to access kernel functions)
+Hardening and limits, quotas (limits.conf, sysctl.conf)
+Debug in linux (how to troubleshoot issues on Linux)
+Load average (1, 5, 15 minutes)
+Networking
+Nat
+ARP
+Vpn
+Vlan (tagged, untagged, trunk)
+Bridge
+Bonding
+Load balancing
+Iptables (tables and chains)
+Cloud and Virtualization
+Hypervisor and emulation. What is it
+Hypervisor performance
+Openstack
+Cloud-init
+Docker
+What is the difference between virtualization and containerization?
+What is main concept of docker
+How does docker networking work
+Steps for starting any service in docker (web server, postgres etc)
+Resource bindings (ports, storages etc)
+What is docker compose
+What is swarm and kubernetes
+Kubernetes
+Objects (pod, service, namespace, storage)
+Components (Control Plane - kube-apiserver, kube-scheduler, kube-controller-manager;
+Node Components - kubelet, kube-proxy)
+High level abstractions (Deployment, DaemonSet, StatefulSet, ReplicaSet, Job)
+What is ingress
+How correctly deploy postgres ReplicaSet in k8s (answer: stolon for example)
+Development and scripting
+Bash scripting
+Exit codes ($?)
+Parameterizing ($1 $2)
+How to debug bash script (-e, -x)
+Bash prompt (while read case)
+What are the 3 standard streams in Linux? (0 - Input, 1 - Output, 2 - Error)
+sed, awk, cut
+Логическое или, и и “;”
+Системы контроля версий
+Системы код ревью
+Сборка кода, мавен, гредл, билд рпм или деб
+HA
+Что такое HA и чем достигается
+Что такое гео реданданси и чем достигается
+CI/CD
+Понимание СI/CD
+Рассказать идеальный на свой взгляд CI/CD flow
+Jenkins
+Configuration management
+Ansible
+What is role concept
+variables hierarchy and visibility
+Ansible vault
+SQL Databases
+Sql engine types and differences (myisam innodb)
+Sql databases replications types and engines
+
+DO: - Dockerization/Migrate-to-Microservices experience. Goals, Challenges, Profits?
+
+Вопросы к синиор/тимлиду. Если справится с проф вопросами, что-то сложное архитектурное спросить. А также:
+Как контролировать работу команды инженеров. Инструменты, методы. Если инженер не справляется с задачей, что нужно делать? (а какой правильный ответ? :))
+Что-то по современным workflow спросить. Sсrum, agile? Это вот все
+Какие бывают конфликты в команде, как их разрешать
+Как можно мотивировать сотрудников
