@@ -1,0 +1,7 @@
+---
+- name: Tasks from GlobalLogic
+  hosts: all
+  become: yes
+
+tasks:
+  - name
