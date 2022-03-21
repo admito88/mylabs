@@ -1,0 +1,35 @@
+Following this link you can download zip archive with our test assignment drive.google.com/file/d/1I2KQMqOKHj6XXSrh_3jTYxfHA_DL2pUL/view?usp=sharing
+
+You need to create your own public repository so we can review your work ( how to make our review easier - see bold text below
+
+
+
+This is static website with ability to connect the Contentful CMS
+
+
+
+Technology stack that you must use:
+
+- Github Actions
+
+- static website + CMS
+
+- AWS ( S3 + Cloudfront)
+
+- Pulumi/AWS CDK ( you should pick one yourself )
+
+
+
+Your task is to setup CI/CD process in such a way, that for each push to master branch in the repository - GitHub Actions are triggered, it should build the website and deploy it to AWS S3 + Cloudfront.
+
+S3+Cloudfront must be created and updated with Infrastructure as Code technology, you can pick one of 2 technologies AWS CDK or Pulumi (Cloudformation or Terraform cannot be used )
+
+To make sure that Contentful CMS is connected properly - please add custom texts/images to the deployed website.
+
+
+
+Ideal assignment should be as follows - you upload code to master, checkout from master to new branch, add some changes and create draft PR, in description of draft pr create a todo list of items you will do to finish the PR, as you proceed with test assignments - push your commits in time, so we can see clear history of changes in the git commits. After you finalized the work - change PR from draft to normal, add link to your cloudfront distribution , make sure github actions pass and don't give errors, add any comments that can be relevant in the description of the PR
+
+Don't try to hide your mistakes in git history, this is quite difficult task, everybody makes mistakes, and for us it is important how you troubleshoot problems and fix them when they occur
+
+During review we will analyze your approach to the work with git, commit messages, frequency of commits, and so on.

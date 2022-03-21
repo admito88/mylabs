@@ -5,53 +5,46 @@ provider "aws" {
 resource "aws_instance" "jenkins_server" {
   ami           = "ami-0dcc0ebde7b2e00db"
   instance_type = "t2.micro"
-  user_data     = <<EOF
-#!/bin/bash
-yum update –y
-wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
-rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
-yum upgrade
-amazon-linux-extras install java-openjdk11 -y
-yum install jenkins -y
-systemctl enable jenkins
-systemctl start jenkins
-EOF
   key_name      = "Amazon_linux"
   tags = {
     Name = "jenkins_server"
   }
   vpc_security_group_ids = [aws_security_group.jenkins_server.id]
+  network_interface {
+    network_interface_id = aws_network_interface.jenkins_server.id
+    device_index         = 0
+  }
 }
 
 resource "aws_instance" "kvm_server" {
   ami           = "ami-0dcc0ebde7b2e00db"
   instance_type = "t2.micro"
-  user_data     = <<EOF
-  #!/bin/bash
-  yum update -yexport AWS_SECRET_ACCESS_KEY=JRG6iBzcYevirYCVrZT2EKKL0ubKw1uQxmIMK0SQ
-  yum upgrade
-EOF
   key_name      = "Amazon_linux"
   tags = {
     Name = "kvm_server"
   }
-  vpc_security_group_ids = [aws_security_group.jenkins_server.id]
+  vpc_security_group_ids = [aws_security_group.kvm_server.id]
+  network_interface {
+    network_interface_id = aws_network_interface.kvm_server.id
+    device_index         = 0
+  }
 }
 
 resource "aws_instance" "HAproxy" {
   ami           = "ami-0dcc0ebde7b2e00db"
   instance_type = "t2.micro"
-  user_data     = <<EOF
-#!/bin/bash
-yum update -y
-yum upgrade
-EOF
   key_name      = "Amazon_linux"
   tags = {
     Name = "HAproxy_server"
   }
   vpc_security_group_ids = [aws_security_group.HAproxy_server.id]
+  network_interface {
+    network_interface_id = aws_network_interface.HAproxy_server.id
+    device_index         = 0
+  }
+
 }
+
 resource "aws_security_group" "jenkins_server" {
   dynamic "ingress" {
     for_each = ["22", "8080"]
@@ -110,6 +103,69 @@ resource "aws_security_group" "HAproxy_server" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
+    Name = "HAproxy_server"
+  }
+}
+
+resource "aws_vpc" "Global_logic_task" {
+  cidr_block = "172.32.0.0/16"
+  tags = {
+    Name = "Global_logic_task"
+  }
+}
+
+resource "aws_internet_gateway" "Global_logic_task" {
+  vpc_id = aws_vpc.Global_logic_task.id
+  tags = {
+    Name = "Global_logic_task"
+  }
+}
+
+resource "aws_route_table" "Global_logic_task" {
+  vpc_id = aws_vpc.Global_logic_task.id
+
+  route {
+    cidr_block = "172.32.10.0/24"
+    gateway_id = aws_internet_gateway.Global_logic_task.id
+  }
+  tags = {
+    Name = "Global_logic_task"
+  }
+}
+
+resource "aws_subnet" "Global_logic_task" {
+  vpc_id     = aws_vpc.Global_logic_task.id
+  cidr_block = "172.32.10.0/24"
+  tags = {
+    Name = "Global_logic_task"
+  }
+}
+
+resource "aws_route_table_association" "Global_logic_task" {
+  subnet_id      = aws_subnet.Global_logic_task.id
+  route_table_id = aws_route_table.Global_logic_task.id
+}
+
+resource "aws_network_interface" "jenkins_server" {
+  subnet_id       = aws_subnet.Global_logic_task.id
+  security_groups = [aws_security_group.jenkins_server.id]
+  tags = {
+    Name = "jenkins_server"
+  }
+}
+
+resource "aws_network_interface" "kvm_server" {
+  subnet_id       = aws_subnet.Global_logic_task.id
+  security_groups = [aws_security_group.kvm_server.id]
+  tags = {
     Name = "kvm_server"
+  }
+}
+
+resource "aws_network_interface" "HAproxy_server" {
+  subnet_id       = aws_subnet.Global_logic_task.id
+  security_groups = [aws_security_group.HAproxy_server.id]
+  tags = {
+    Name = "HAproxy_server"
   }
 }
