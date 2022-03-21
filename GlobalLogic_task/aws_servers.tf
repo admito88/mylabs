@@ -9,7 +9,6 @@ resource "aws_instance" "jenkins_server" {
   tags = {
     Name = "jenkins_server"
   }
-  vpc_security_group_ids = [aws_security_group.jenkins_server.id]
   network_interface {
     network_interface_id = aws_network_interface.jenkins_server.id
     device_index         = 0
@@ -23,7 +22,6 @@ resource "aws_instance" "kvm_server" {
   tags = {
     Name = "kvm_server"
   }
-  vpc_security_group_ids = [aws_security_group.kvm_server.id]
   network_interface {
     network_interface_id = aws_network_interface.kvm_server.id
     device_index         = 0
@@ -37,7 +35,6 @@ resource "aws_instance" "HAproxy" {
   tags = {
     Name = "HAproxy_server"
   }
-  vpc_security_group_ids = [aws_security_group.HAproxy_server.id]
   network_interface {
     network_interface_id = aws_network_interface.HAproxy_server.id
     device_index         = 0
@@ -108,7 +105,7 @@ resource "aws_security_group" "HAproxy_server" {
 }
 
 resource "aws_vpc" "Global_logic_task" {
-  cidr_block = "172.32.0.0/16"
+  cidr_block = "172.64.0.0/16"
   tags = {
     Name = "Global_logic_task"
   }
@@ -125,7 +122,7 @@ resource "aws_route_table" "Global_logic_task" {
   vpc_id = aws_vpc.Global_logic_task.id
 
   route {
-    cidr_block = "172.32.10.0/24"
+    cidr_block = "172.64.0.0/16"
     gateway_id = aws_internet_gateway.Global_logic_task.id
   }
   tags = {
@@ -135,7 +132,7 @@ resource "aws_route_table" "Global_logic_task" {
 
 resource "aws_subnet" "Global_logic_task" {
   vpc_id     = aws_vpc.Global_logic_task.id
-  cidr_block = "172.32.10.0/24"
+  cidr_block = "172.64.16.0/20"
   tags = {
     Name = "Global_logic_task"
   }
