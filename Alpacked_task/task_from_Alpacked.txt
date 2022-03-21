@@ -1,3 +1,8 @@
+1. Create repo git GitHub.
+2. Using AWS CDK create S3 and Cloudfront systems and update them if take any changes.
+3. GitHub Actions if take edit in master branch push new version of site in S3 and Cloudfront
+4. Contentful CMS connect to S3 bucket and edit data.
+
 Following this link you can download zip archive with our test assignment drive.google.com/file/d/1I2KQMqOKHj6XXSrh_3jTYxfHA_DL2pUL/view?usp=sharing
 
 You need to create your own public repository so we can review your work ( how to make our review easier - see bold text below
