@@ -1,1 +1,3 @@
 cdk init ProjectName --language typescript
+aws configure
+cdk bootstrap aws://ACCOUNT-NUMBER/REGION
