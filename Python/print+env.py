@@ -12,17 +12,17 @@ name = "Abraham"
 status = True
 
 # Ekranirovanie
-print ( 'Hi "is a bad" peope!' )
-print ( "Hi \"is a bad\" peope!" )
+print('Hi "is a bad" peope!')
+print("Hi \"is a bad\" peope!")
 
 #Perevod Stroki
-print ('Hello\nWorld')
+print('Hello\nWorld')
 #or
-print ('Hello')
-print ('World')
+print('Hello')
+print('World')
 
 #Konkotinatsya, ispolzovanie peremenuh v zaprose only for string
-print ('Hello, my name is ' + name + '!')
+print('Hello, my name is ' + name + '!')
 
 #Konkotinatsya, ispolzovanie peremenuh v zaprose s izmeneniem typa peremennoy
-print ('My age ' + str(age) + ' for now')
+print('My age ' + str(age) + ' for now')
