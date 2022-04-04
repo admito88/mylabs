@@ -1,5 +1,6 @@
 GlobalLogic_task/.terraform
-terraform*
+Oril_task/terraform*
 GlobalLogic_task/.terraform*
 Alpacked_task/aws_cdk_TypeScript
 TypeScript/node_modules
+Oril_task/.terraform*
