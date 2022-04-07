@@ -1,12 +1,18 @@
-output "web_1_id" {
-value = aws_instance.web_1.id
+output "data_aws_availability_zone" {
+  value = data.aws_availability_zones.working.names
 }
-
-output "web_1_privat_ip" {
-value = aws_instance.web_1.private_ip
+output "data_aws_caller_identity" {
+  value = data.aws_caller_identity.current.account_id
 }
-
-output "web_1_public_ip" {
-value = aws_instance.web_1.public_ip
-description = "This is public ip of instance web_1"
+output "data_aws_region" {
+  value = data.aws_region.current.description
+}
+output "aws_vpcs"{
+  value = data.aws_vpcs.my_vpcs.ids
+}
+output "aws_vpc_id"{
+  value = data.aws_vpc.prod_vpc.id
+}
+output "aws_vpc_cidr"{
+  value = data.aws_vpc.prod_vpc.cidr_block
 }
