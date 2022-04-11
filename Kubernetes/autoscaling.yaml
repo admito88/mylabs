@@ -1,0 +1,45 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-web-deployment-autoscaling
+  labels:
+    app: new
+    owner: admito
+spec:
+  selector:
+    matchLabels:
+      project: mossad
+  template:
+    metadata:
+      labels:
+        project: mossad
+    spec:
+     containers:
+     - name: mossad-web
+       image: admito/k8s:latest
+       ports:
+        - containerPort: 80
+...
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: my-autoscale
+spec:
+    scaleTargetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: my-web-deployment-autoscaling
+    minReplicas: 2
+    maxReplicas: 3
+    metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        targetAverageUtilization: 70
+    - type: Resource
+      resource:
+        name: memory
+        targetAverageUtilization: 80
+...

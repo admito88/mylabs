@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-web-deployment-replica
+  labels:
+    app: new
+    env: one
+    owner: admito
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      project: test1
+  template:
+    metadata:
+      labels:
+        project: test1
+    spec:
+      containers:
+        - name: test-web2
+          image: admito/k8s:latest
+          ports:
+            - containerPort: 80
