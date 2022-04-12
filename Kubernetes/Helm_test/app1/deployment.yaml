@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-web-deploy
+  labels:
+    app: my-k8s-deploy
+spec:
+  replication: 2
+  selector:
+    mathLabels:
+      project: cio
+  template:
+    metadata:
+      labels:
+        project: cio
+      spec:
+        containers:
+        - name: cio-web
+          image: admito/k8s:version1
+...

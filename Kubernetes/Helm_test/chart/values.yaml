@@ -1,0 +1,4 @@
+container:
+  image: admito/k8s:latest
+
+replicaCount: 2

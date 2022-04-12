@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Relise.Name }}-deployment
+  labels:
+    app: {{ .Relise.Name }}-deployment
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    mathLabels:
+      project: {{ .Relise.Name }}
+  template:
+    metadata:
+      labels:
+        project: {{ .Relise.Name }}
+      spec:
+        containers:
+        - name: {{ .Relise.Name }}-web
+          image: {{ .Values.container.image }}
+          ports:
+            - containerPort: 80
+...

@@ -1,0 +1,17 @@
+apiVersion: v2
+name: App-HelmChart
+description: My Helm Chart for k8s
+type: application
+version: 0.1.0
+appVersion: 1.2.3
+
+keywords:
+  - apache
+  - http
+  - https
+  - admito
+
+maintainers:
+  - name: Vadim
+    e-mail: admito88@123
+    url: admito.com
