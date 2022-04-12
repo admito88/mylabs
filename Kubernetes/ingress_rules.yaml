@@ -1,0 +1,37 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: Ingress hosts
+spec:
+  rules:
+  - host: "main.admito.com"
+    http:
+      paths:
+        - backend:
+           serviceName: main
+           servicePort: 80
+  - host: "ver1.admito.com"
+    http:
+      paths:
+        - backend:
+           serviceName: ver1
+           servicePort: 80
+  - host: "ver2.admito.com"
+    http:
+      paths:
+        - backend:
+           serviceName: ver2
+           servicePort: 80
+  - host: "ver3.admito.com"
+    http:
+      paths:
+        - backend:
+           serviceName: ver3
+           servicePort: 80
+  - host: "tomcat.admito.com"
+    http:
+      paths:
+        - backend:
+           serviceName: tomcat
+           servicePort: 8080
